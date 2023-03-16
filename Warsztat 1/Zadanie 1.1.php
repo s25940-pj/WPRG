@@ -6,3 +6,5 @@ function diceRoll() {
 
 echo diceRoll();
 
+
+
