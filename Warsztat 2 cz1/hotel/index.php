@@ -1,14 +1,10 @@
-<?php
-$num_of_guests = $_GET['num_of_guests'] ?? 1;
-?>
-
 <form method="POST" action="reservation_details.php">
     <label for="num_of_guests">Number of guests:</label>
-    <select id="num_of_guests" name="num_of_guests">
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
+    <select id="num_of_guests" name="num_of_guests" onchange="reloadPage(this)">
+        <option value="1" <?php echo ($num_of_guests == 1) ? 'selected' : ''; ?>>1</option>
+        <option value="2" <?php echo ($num_of_guests == 2) ? 'selected' : ''; ?>>2</option>
+        <option value="3" <?php echo ($num_of_guests == 3) ? 'selected' : ''; ?>>3</option>
+        <option value="4" <?php echo ($num_of_guests == 4) ? 'selected' : ''; ?>>4</option>
     </select>
     <br>
     <?php
@@ -16,16 +12,16 @@ $num_of_guests = $_GET['num_of_guests'] ?? 1;
         echo '<h1> Guest nr.' . $guest_num . ': </h1>';
         echo '<label for="first_name_guest_' . $guest_num . '">First Name:</label>';
         echo '<input type="text" id="first_name_guest_' . $guest_num . '" name="first_name_guest_' . $guest_num .  '" required>';
-        echo '<br>';
-        echo '<br>';
+        echo '<br />';
+        echo '<br />';
         echo '<label for="last_name_guest_' . $guest_num . '">Last Name:</label>';
         echo '<input type="text" id="last_name_guest_' . $guest_num . '" name="last_name_guest_' . $guest_num .  '" required>';
-        echo '<br>';
-        echo '<br>';
+        echo '<br />';
+        echo '<br />';
         echo '<label for="email_g_' . $guest_num . '">Email:</label>';
         echo '<input type="text" id="email_guest_' . $guest_num . '" name="email_guest_' . $guest_num .  '" required>';
-        echo '<br>';
-        echo '<br>';
+        echo '<br />';
+        echo '<br />';
     }
     ?>
     <label for="address">Address:</label>
@@ -50,11 +46,20 @@ $num_of_guests = $_GET['num_of_guests'] ?? 1;
     <br>
     <label for="amenities">Amenities:</label>
     <select id="amenities" name="amenities[]" multiple>
-        <option value="air_conditioning">Air Conditioning</option>
-        <option value="smoking_room">Smoking Room</option>
+        <option value="Air Conditioning">Air Conditioning</option>
+        <option value="Smoking Room">Smoking Room</option>
     </select>
     <br>
     <br>
     <input type="submit" value="Submit">
 </form>
+<script>
+    function reloadPage(selectElement) {
+        window.location.href = window.location.pathname + "?num_of_guests=" + selectElement.value;
+    }
+</script>
+
+<?php
+$num_of_guests = $_GET['num_of_guests'] ?? 1;
+?>
 

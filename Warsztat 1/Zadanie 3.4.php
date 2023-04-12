@@ -1,5 +1,4 @@
 <?php
-
 $counter = 0;
 
 if (isPrime(13123123)) {
@@ -12,12 +11,9 @@ else {
 echo "Counter: " . $counter;
 
 function isPrime($number) {
-
     if ($number < 2) {
         return false;
     }
-
-
 
     for($i = 2; $i * $i <= $number; $i++) {
         if ($number % $i == 0) {
@@ -25,10 +21,8 @@ function isPrime($number) {
         }
 
         global $counter;
-
         $counter++;
     }
-
 
 	return true;
 }
