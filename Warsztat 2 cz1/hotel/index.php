@@ -1,3 +1,7 @@
+<?php
+$num_of_guests = $_GET['num_of_guests'] ?? 1;
+?>
+
 <form method="POST" action="reservation_details.php">
     <label for="num_of_guests">Number of guests:</label>
     <select id="num_of_guests" name="num_of_guests" onchange="reloadPage(this)">
@@ -58,8 +62,4 @@
         window.location.href = window.location.pathname + "?num_of_guests=" + selectElement.value;
     }
 </script>
-
-<?php
-$num_of_guests = $_GET['num_of_guests'] ?? 1;
-?>
 
