@@ -24,7 +24,7 @@ if (isset($_POST['submit'])) {
             break;
     }
 
-    header("Location: index.php?calculationResult=$calculationResult");
+    header("Location: redirect.php?calculationResult=$calculationResult");
     exit;
 }
 

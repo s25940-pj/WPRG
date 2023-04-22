@@ -9,24 +9,19 @@ function getAge($date_of_birth, $today) {
     return date_diff(date_create($date_of_birth), date_create($today)) -> format('%y');
 }
 
-function getDaysToNextBday($date_of_birth, $today) {
-    $date_of_birth = date_create($date_of_birth);
-    $today = date_create($today);
-    $interval = (int) date_diff($today, $date_of_birth) -> format('%a');
+function getDaysToNextBday($date_of_birth) {
+    $birthdate = new DateTime($date_of_birth);
+    $today = new DateTime();
+    $next_birthday = new DateTime();
+    $next_birthday->setDate($today->format('Y'), $birthdate->format('m'), $birthdate->format('d'));
 
-    if ($today > $date_of_birth) {
-        $current_year = date('Y');
-        $is_leap_year = date('L', strtotime("$current_year-01-01"));
-
-        if ($is_leap_year) {
-            $interval = $interval + 366;
-        }
-        else {
-            $interval = $interval + 355;
-        }
+    if ($next_birthday < $today) {
+        $next_birthday->modify('+1 year');
     }
 
-    return $interval;
+    $interval = $today->diff($next_birthday);
+
+    return $interval->days;
 }
 
 ?>
@@ -46,7 +41,7 @@ function getDaysToNextBday($date_of_birth, $today) {
             echo '<p>You were born on ' . getDayOfWeekOfBday($date_of_birth) . '.</p>';
             echo '<p>You are ' . getAge($date_of_birth, $today) . ' years old.</p>';
 
-            echo '<p>Your next birthday is in ' . getDaysToNextBday($date_of_birth, $today) . ' days.</p>';
+            echo '<p>Your next birthday is in ' . getDaysToNextBday($date_of_birth) . ' days.</p>';
         }
     }
 ?>
