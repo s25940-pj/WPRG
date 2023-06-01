@@ -1,0 +1,21 @@
+CREATE DATABASE mojaBaza;
+
+USE mojaBaza;
+
+CREATE TABLE cars (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  make VARCHAR(255),
+  model VARCHAR(255),
+  price DECIMAL(10,2),
+  year INT,
+  description VARCHAR(255)
+);
+
+INSERT INTO cars (make, model, price, year, description)
+VALUES
+  ('Toyota', 'AE86', 20000, 1983, 'small, front-engine/rear-wheel-drive model'),
+  ('Tesla', 'Model S', 129000, 2012, 'electric executive car'),
+  ('Mazda', ' CX-5', 90000, 2012, 'compact crossover SUV'),
+  ('Ford', 'Focus', 25000, 1998, 'compact car'),
+  ('Ford', 'Mustang', 200000, 1979, 'highly styled line of sporty coupes and convertibles derived from existing model lines'),
+  ('Kia', 'Rio', 45000, 2012, 'subcompact car')
